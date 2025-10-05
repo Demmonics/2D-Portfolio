@@ -7,10 +7,54 @@
     <title>2d-portfolio</title>
   </head>
   <body>
-    <style></style>
-    <div>
+    <style>
+      @font-face {
+        font-family : monogram;
+        src : url(monogram.ttf);
+      }
+      body{
+        font-family: monogram, monospace;
+        font-size: 2rem; /*1 rem is the default size of 16px so 2 times the font of ur browser*/
+        overflow: hidden;
+      }
+  #app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;/* it will help us control the x and y position of the document in css */
+  }
+  #textbox {
+    position: absolute;/* we get full control by doing this 8*/
+    left: 10%;
+    right: 10%;
+    bottom: 2vh; /* 2% of the viewport height so that it adapts to the screen of the user*/
+    min-height: 10vh; /* minimum height of 10% of the viewport height*/
+    background : white;
+    border-radius: 3px;
+    outline-style: solid;
+    padding: 1rem;
+    display: flex;/* we use flexbox to align the text and the button */
+    flex-direction:  column;/* the text will be in a column */
+    flex-wrap: wrap;/* if the text is too long it will go to the next line */
+    justify-content:flex-start;/* all the text will be aligned to the top */
+    align-items: flex-start;/* all the text will be aligned to the left */
+    word-spacing: 0.2rem;
+    filter: drop-shadow(0 0 0.75rem rgb(112,112,112));/* mdn site has the documentation on how to use drop shadow*/
+  }
+    </style>
+    <div  id="app">
+    <div id="ui">
+      <p class="note">Tap/Click around to move</p>
+      <div id="textbox-container" style="display: none;">
+      <div id="textbox">
+        <p id="dialogue" class ="ui-text"></p>
+        <div class="btn-container">
+          <button id="close" class="ui-close-btn">Close</button>
+        </div>
+      </div>
+      </div>
     </div>
-    <div id="ui"></div>
+    <canvas id="game"></canvas>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
-</html> 
+</html>

@@ -1,8 +1,8 @@
-const { defineConfig } = require("vite");
+import { defineConfig } from "vite";
 
-export defineConfig({
-    base:"./",
-    build:{
+export default defineConfig({
+    base: "./",
+    build: {
         minify: "terser",
     },
 });
