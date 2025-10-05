@@ -23,7 +23,7 @@ k.scene("main", async () => {
     k.sprite("map"), // for the map we are going to need the sprite component to display the acutal map the way we do this by using the sprite component offered by kaboom then passing it by a key for the map we want to display we specify the key in the load sprite funciton for the image map.png thats how kaboom is able  to know and advance what to display
     k.pos(0), // the positional component is used to specify the position of the game object on the screen, it takes in two arguments x and y axis, it is not neccesary only when it is displayed just the position the object could have and iwll only show when i show the add function
     k.scale(scaleFactor); //this is the final component we are going to use for the game objecty because our image is a pixel art we need to be able to scale it up so that we can see it better on the screen, for a better practice we are using a constant to specify the scale component in constant.js file so that we can easily change it in once place if we want to change the scale of the entire game later on 
-}); //what is a game object?, in kaboom js a game object can be anything plyers props etc ,It is an object which contains diffrent compoentns, those components can be anything position,area, a body, a specific spirte.
+ //what is a game object?, in kaboom js a game object can be anything plyers props etc ,It is an object which contains diffrent compoentns, those components can be anything position,area, a body, a specific spirte.
 // the way kaboom works is that by passing in an array of compnents u specify behaviour for your game objects its basically an entitiy component system
 // so how do u create a game object in kaboom js?, the first one is the make funciton which allows u to make a game object and then using the aadd function u can add it to the screen by calling the k.add fucntion or u can just call the k.add function from the start and pass in ur array of compents from the get go
 // it an async fucniton beacuse we need to fetch the map.json data from the server and for that we are going to use a fetch call
@@ -45,7 +45,7 @@ const plyer = k.make([
     "player", // this is a tag we are giving to the player game object so that we can easily identify it later on when we want to check for collisions if we give a tag we can use the onCollide function to know if this colided witht that to run that logic 
 ]); // the sprite component is used to display the sprite on the screen we are using the spritesheet we loaded earlier and we are also specifying the default animation to be idle-down, this is something we can do when we have a spirtesheet with many framaes and we want to specify a default animation to be played when the game starts and we have access to a seconf parameter where we can specify the default animation
 
-for(const layers of layers)// for loop which is going to iterate through all the layers of the boundaries layer.objects when we are dealing with an object they have access to the objects property which is an array containing all the objects in the layer and the objects in that layer are objects with a x and y position width and height
+for(const layer of layers)// for loop which is going to iterate through all the layers of the boundaries layer.objects when we are dealing with an object they have access to the objects property which is an array containing all the objects in the layer and the objects in that layer are objects with a x and y position width and height
 {
     if(layer.name =="boundaries")
         {
@@ -82,6 +82,9 @@ for(const layers of layers)// for loop which is going to iterate through all the
             }
         }
 }
-
+k.onUpdate(() => {// code for the camera to follow the player
+    k.camPos(player.pos.x, player.pos.y +100); // this is used to make the camera follow the player by setting the camera position to the player world position,when we create a game object as part of a child of another game object use world postion to convert the position to be the positon in the actual canvas and not relative to the parent
+})
+});
 k.go("main"); // this is set before the scene as the starting point of the game where the game will start
 // hit the f1 key to open the debug menu (only in dev mode) in kaboom js
