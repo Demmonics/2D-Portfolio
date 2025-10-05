@@ -40,6 +40,33 @@
     word-spacing: 0.2rem;
     filter: drop-shadow(0 0 0.75rem rgb(112,112,112));/* mdn site has the documentation on how to use drop shadow*/
   }
+
+  .ui-text {
+    margin: 0;
+    user-select: none;/* user cannot select the text */
+  }
+
+  .ui-close-btn{
+    font-family: inherit;/* inherit the font from the parent element*/
+    border-style: none;
+    border-radius: 3px;
+    padding: 1rem;
+  }
+
+  .btn-container{
+    align-self: flex-end;/* the button will be aligned to the right */
+    margin-top: 1rem;
+  }
+
+  .note{
+    position: absolute;
+    left: 5%;
+    top: 1vh;
+    display: flex;
+    flex-direction: column;
+    color: rgb(238,238,238);
+    user-select: none;
+  }
     </style>
     <div  id="app">
     <div id="ui">

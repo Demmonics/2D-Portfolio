@@ -63,7 +63,7 @@ for(const boundary of layers.objects)// for loop which is going to iterate throu
     {
         player.onCollide(boundary.name, () => {
             player.isInDialogue = true;
-            //TODO
+            displayDialogue("TODO", () => (player.isInDialogue = false));// we are passing a callback function to the display dialogue function so that when the dialogue is done we can set the isInDialogue property to false so that the player can move again when the dialgue is closed
         })
     }
         } // we are checking if the layer name is boundaries becuase we only want to add the boundaries layer to the map game object
