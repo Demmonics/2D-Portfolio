@@ -45,7 +45,7 @@ const plyer = k.make([
     "player", // this is a tag we are giving to the player game object so that we can easily identify it later on when we want to check for collisions if we give a tag we can use the onCollide function to know if this colided witht that to run that logic 
 ]); // the sprite component is used to display the sprite on the screen we are using the spritesheet we loaded earlier and we are also specifying the default animation to be idle-down, this is something we can do when we have a spirtesheet with many framaes and we want to specify a default animation to be played when the game starts and we have access to a seconf parameter where we can specify the default animation
 
-for(const boundary of layers.objects)// for loop which is going to iterate through all the layers of the boundaries layer.objects when we are dealing with an object they have access to the objects property which is an array containing all the objects in the layer and the objects in that layer are objects with a x and y position width and height
+for(const layers of layers)// for loop which is going to iterate through all the layers of the boundaries layer.objects when we are dealing with an object they have access to the objects property which is an array containing all the objects in the layer and the objects in that layer are objects with a x and y position width and height
 {
     if(layer.name =="boundaries")
         {
@@ -66,8 +66,21 @@ for(const boundary of layers.objects)// for loop which is going to iterate throu
             displayDialogue("TODO", () => (player.isInDialogue = false));// we are passing a callback function to the display dialogue function so that when the dialogue is done we can set the isInDialogue property to false so that the player can move again when the dialgue is closed
         })
     }
+    continue;
         } // we are checking if the layer name is boundaries becuase we only want to add the boundaries layer to the map game object
 
+        if(layer.name =="spawnpoints"){
+            for(const entity of layer.objects){
+                if (entity.name == "player"){
+                    player.pos =k.vec2(// because we aldready created this player game object we can just set its position by accessing the pos property of the player game object and setting it to a new vector 2 with the x and y position of the entity we are iterating through in the spawnpoints layer
+                        (map.pos.x + entity.x) * scaleFactor, // we are multiplying the position by the scale factor becuase we scaled up the entire game by the scale factor so we need to scale up the position as well so that the player spawns at the correct position on the screen
+                        (map.pos.y + entity.y) * scaleFactor,// we are adding the map position to the entity position becuase the map position is 0,0 but if we were to move the map position to say -100,-100 then we want the player to spawn at the correct position relative to the map position so we add the map position to the entity position
+                    );
+                    k.add(player);// we are using the kaboom game object to add the player into the scene
+                    continue;// does not matter though because we only have two layers
+                }
+            }
+        }
 }
 
 k.go("main"); // this is set before the scene as the starting point of the game where the game will start
