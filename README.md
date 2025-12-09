@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
   <img src="https://img.shields.io/badge/Kaboom.js-Game%20Engine-purple?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Vite-Bundler-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge"/>
+  
 </p>
 
 A **2D pixel-art portfolio game** built using **Kaboom.js**, featuring smooth player movement, sprite animations, collision detection, camera tracking, and an interactive dialogue system.  
